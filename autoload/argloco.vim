@@ -8,6 +8,8 @@
 "              See http://sam.zoy.org/wtfpl/COPYING for more details.
 "
 " ============================================================================
+let s:save_cpo = &cpo
+set cpo&vim
 
 if exists("g:loaded_argloco")
     finish
@@ -42,3 +44,6 @@ nnoremap [1;10C :tabn<CR>
 nnoremap Ó :tabN<CR>
 " or option+shift+l --> Ò
 nnoremap Ò :tabn<CR>
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
