@@ -31,9 +31,6 @@ function! argloco#version()
     return '1.0.0'
 endfunction
 
-com LarglN call argloco#GoBackth()
-com Largln call argloco#GoForth()
-
 if exists("g:argloco_map_all")
     let s:map_the_arrows = 1
     let s:map_function_keys = 1
@@ -45,20 +42,20 @@ else
 endif
 
 if s:map_function_keys
-    nnoremap <F1> :LarglN<CR>
-    nnoremap <F2> :Largln<CR>
+    nnoremap <F1> :call argloco#GoBackth()<CR>
+    nnoremap <F2> :call argloco#GoForth()<CR>
 endif
 
 if s:map_the_arrows
-    nnoremap [1;10A :LarglN<CR>
-    nnoremap [1;10B :Largln<CR>
+    nnoremap [1;10A :call argloco#GoBackth()<CR>
+    nnoremap [1;10B :call argloco#GoForth()<CR>
     nnoremap [1;10D :tabN<CR>
     nnoremap [1;10C :tabn<CR>
 endif
 
 if s:map_home_row
-    nnoremap  :LarglN<CR>
-    nnoremap Ô :Largln<CR>
+    nnoremap  :call argloco#GoBackth()<CR>
+    nnoremap Ô :call argloco#GoForth()<CR>
     nnoremap Ó :tabN<CR>
     nnoremap Ò :tabn<CR>
 endif
