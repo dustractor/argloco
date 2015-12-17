@@ -36,24 +36,33 @@ else
 endif
 
 if s:map_function_keys
-    " F1 and F2 to traverse arglist
     nnoremap <F1> :LarglN<CR>
     nnoremap <F2> :Largln<CR>
 endif
 
 if s:map_the_arrows
-    nnoremap [1;10A :LarglN<CR> "  [1;10A --> option+shift+up
-    nnoremap [1;10B :Largln<CR> "  [1;10B --> option+shift+down
-    nnoremap [1;10D :tabN<CR>   "  [1;10D --> option+shift+left
-    nnoremap [1;10C :tabn<CR>   "  [1;10C --> option+shift+right
+    nnoremap [1;10A :LarglN<CR>
+    nnoremap [1;10B :Largln<CR>
+    nnoremap [1;10D :tabN<CR>
+    nnoremap [1;10C :tabn<CR>
 endif
 
 if s:map_home_row
-    nnoremap  :LarglN<CR>        "    --> option+shift+k
-    nnoremap Ô :Largln<CR>        "   Ô --> option+shift+j
-    nnoremap Ó :tabN<CR>          "   Ó --> option+shift+h
-    nnoremap Ò :tabn<CR>          "   Ò --> option+shift+l
+    nnoremap  :LarglN<CR>
+    nnoremap Ô :Largln<CR>
+    nnoremap Ó :tabN<CR>
+    nnoremap Ò :tabn<CR>
 endif
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
+
+"  LEGEND OF MAP
+"  [1;10A --> option+shift+up
+"  [1;10B --> option+shift+down
+"  [1;10D --> option+shift+left
+"  [1;10C --> option+shift+right
+"    --> option+shift+k
+"   Ô --> option+shift+j
+"   Ó --> option+shift+h
+"   Ò --> option+shift+l
