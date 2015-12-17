@@ -1,38 +1,53 @@
-*argloco.vim* A tablocal arglist traversal plugin.
+*argloco.vim* An argument-list and tab-list traversal plugin.
 ========================================================================
 
-Two Commands:
+*argloco-commands*                                        *:LarglN* *:Largln*
 
-    :LarglN
-      and
-    :Largln
-    
-    Move 
+  Argloco provides the following two commands for cycling backwards and
+  forwards through the argument list:
 
-========================================================================
-
-One Function:
-
-    argloco#TabArgs( tab-argument-list )
+        :LarglN
+        :Largln
 
 ========================================================================
+*argloco-mappings*
 
-Eight Mappings:
 
- ----------------------------------------------
- |  Alt + Shift + Down   |  Alt + Shift + j   |         
- |  Alt + Shift + Up     |  Alt + Shift + k   |         
- ----------------------------------------------
- |  Alt + Shift + Left   |  Alt + Shift + h   |         
- |  Alt + Shift + Right  |  Alt + Shift + l   |         
- ----------------------------------------------
+Mappings:
+
+            ----------------------------------------------
+            |                       |                    |
+    :LarglN |  Alt + Shift + Up     |  Alt + Shift + k   |
+    :Largln |  Alt + Shift + Down   |  Alt + Shift + j   |
+            |                       |                    |
+            ----------------------------------------------
+            |                       |                    |
+    :tabN   |  Alt + Shift + Left   |  Alt + Shift + h   |
+    :tabn   |  Alt + Shift + Right  |  Alt + Shift + l   |
+            |                       |                    |
+            ----------------------------------------------
 
 ========================================================================
-
+*argloco-settings*                                      *g:argloco_map_all*
 To enable all mappings:
 
         :let g:argloco_map_all = 1
 
+                                               *g:argloco_map_the_arrows*
+                                            *g:argloco_map_function_keys*
+                                                 *g:argloco_map_home_row*
+Or individually enable mappings:
+
+        :let g:argloco_map_the_arrows = 1
+        :let g:argloco_map_function_keys = 1
+        :let g:argloco_map_home_row = 1
+
+========================================================================
+                                                      *argloco#TabArgs()*
+Function:
+
+
+    argloco#TabArgs( tab-argument-list )
 
 ========================================================================
 
