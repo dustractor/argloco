@@ -8,6 +8,8 @@
 "              See http://sam.zoy.org/wtfpl/COPYING for more details.
 "
 " ============================================================================
+" Description: Adds 2 commands: LarglN and Largln for traversing local
+" arglist.  Optional helper mappings can be enabled.
 let s:save_cpo = &cpo
 set cpo&vim
 

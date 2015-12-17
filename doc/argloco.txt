@@ -1,9 +1,45 @@
-##Argloco##
-####This is argument court and I'm crazy about arguments.  Argument lists, that is.  In vim.  So that I can use them to group windows with specific tabs.  Here is how that all works:
+*argloco.vim* A tablocal arglist traversal plugin.
+========================================================================
+
+Two Commands:
+
+    :LarglN
+      and
+    :Largln
+    
+    Move 
+
+========================================================================
+
+One Function:
+
+    argloco#TabArgs( tab-argument-list )
+
+========================================================================
+
+Eight Mappings:
+
+ ----------------------------------------------
+ |  Alt + Shift + Down   |  Alt + Shift + j   |         
+ |  Alt + Shift + Up     |  Alt + Shift + k   |         
+ ----------------------------------------------
+ |  Alt + Shift + Left   |  Alt + Shift + h   |         
+ |  Alt + Shift + Right  |  Alt + Shift + l   |         
+ ----------------------------------------------
+
+========================================================================
+
+To enable all mappings:
+
+        :let g:argloco_map_all = 1
 
 
-The relevant line for vundle users:
+========================================================================
 
-    Plugin 'dustractor/argloco'
+For vundle users:
+
+        :Plugin 'dustractor/argloco'
 
 
+========================================================================
+vim:tw=78:ts=8:ft=help:norl:

@@ -1,6 +1,6 @@
 " plugin/argloco.vim
 
-"{{{2 Wipe out nameless buffers
+"{{{1 Wipe out nameless buffers
 fun! s:WipeoutNonames()
     for i in range(bufnr('$'),1,-1)
         if bufname(i) == ""
@@ -9,7 +9,7 @@ fun! s:WipeoutNonames()
     endfor
 endfun
 
-"{{{2 Make taboo tabs with local argument lists
+"{{{1 Make taboo tabs with local argument lists
 fun! argloco#TabArgs(tabargls)
     let l:madefirst = 0
     for [tabname,tabargs] in a:tabargls
@@ -25,7 +25,7 @@ fun! argloco#TabArgs(tabargls)
     echo "ok"
 endfun
 
-"{{{2 Functions for moving around the argument list
+"{{{1 Functions for moving around the argument list
 fun! argloco#LargLBack()
     if argidx() == 0
         exe "argu ".argc()
@@ -42,6 +42,7 @@ fun! argloco#LargLForth()
     endif
 endfun
 
+"{{{1 Functions for moving amongst the tabs
 fun! argloco#GoBackth()
     if exists('t:taboo_tab_name')
         call argloco#LargLBack()
@@ -57,4 +58,3 @@ fun! argloco#GoForth()
         exe 'bn'
     endif
 endfun
-"}}}
