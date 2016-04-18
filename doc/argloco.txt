@@ -55,6 +55,11 @@ For vundle users:
 
         :Plugin 'dustractor/argloco'
 
+For vim-plug users:
+
+        :Plug 'dustractor/argloco'
+
+
 
 ========================================================================
 vim:tw=78:ts=8:ft=help:norl:
