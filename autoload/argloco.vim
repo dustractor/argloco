@@ -25,50 +25,48 @@ set cpo&vim
 if exists("g:loaded_argloco")
     finish
 endif
+
 let g:loaded_argloco = 1
 
 function! argloco#version()
-    return '1.0.0'
+    return '1.2.3'
 endfunction
 
+com GoBackth call argloco#GoBackth()
+com GoForth call argloco#GoForth()
+
+com -nargs=1 ArgLoco call argloco#Argloco(<args>)
+
+let s:do_map_back = 0
+let s:do_map_forth = 0
+
 if exists("g:argloco_map_all")
-    let s:map_the_arrows = 1
-    let s:map_function_keys = 1
-    let s:map_home_row = 1
+    let s:do_map_back = 1
+    let s:do_map_forth = 1
 else
-    let s:map_the_arrows = get(g:,"argloco_map_the_arrows",0)
-    let s:map_function_keys = get(g:,"argloco_map_function_keys",0)
-    let s:map_home_row = get(g:,"argloco_map_home_row",0)
+    let s:do_map_back = exists("g:argloco_map_back")
+    let s:do_map_forth = exists("g:argloco_map_forth")
 endif
 
-if s:map_function_keys
-    nnoremap <F1> :call argloco#GoBackth()<CR>
-    nnoremap <F2> :call argloco#GoForth()<CR>
+if s:do_map_back
+    let s:map_back = get(g:,"argloco_map_back",'<F1>')
 endif
 
-if s:map_the_arrows
-    nnoremap [1;10A :call argloco#GoBackth()<CR>
-    nnoremap [1;10B :call argloco#GoForth()<CR>
-    nnoremap [1;10D :tabN<CR>
-    nnoremap [1;10C :tabn<CR>
+if s:do_map_forth
+    let s:map_forth = get(g:,"argloco_map_forth",'<F2>')
 endif
 
-if s:map_home_row
-    nnoremap  :call argloco#GoBackth()<CR>
-    nnoremap Ô :call argloco#GoForth()<CR>
-    nnoremap Ó :tabN<CR>
-    nnoremap Ò :tabn<CR>
+let s:mapfmt = 'nnoremap %s :%s<CR>'
+
+if s:do_map_back
+    exec printf(s:mapfmt,s:map_back,'GoBackth')
+endif
+
+if s:do_map_forth
+    exec printf(s:mapfmt,s:map_forth,'GoForth')
 endif
 
 let &cpo = s:save_cpo
+
 unlet s:save_cpo
 
-"  THIS IS THE LEGEND OF THE MAPPINGS
-"  [1;10A --> option+shift+up
-"  [1;10B --> option+shift+down
-"  [1;10D --> option+shift+left
-"  [1;10C --> option+shift+right
-"    --> option+shift+k
-"   Ô --> option+shift+j
-"   Ó --> option+shift+h
-"   Ò --> option+shift+l

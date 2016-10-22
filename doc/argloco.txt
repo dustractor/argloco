@@ -1,65 +1,60 @@
 *argloco.vim* An argument-list and tab-list traversal plugin.
 ========================================================================
 
-*argloco-commands*                                        *:LarglN* *:Largln*
+*argloco-command*                                                 *:ArgLoco*
+    Used in the context of a project setup-file, the command ArgLoco
+    creates named tabs via Taboo ( see gcmt/taboo.vim ) and populates
+    their tab-local argument lists.
+
+    For example, the line
+
+        ArgLoco [["foo","bar baz"],["quuz","zif nabfiz"]]
+
+    in a file ``proj.vim`` and sourced at the shell
+
+    $ vim -c 'so proj.vim'
+
+    would open up vim with two tabs, foo and quuz, with each tab having two
+    files on their tab-local argument lists.
+
+    That could also be written as follows:
+
+        :ArgLoco [
+                \ ["foo","bar baz"],
+                \ ["quuz","zif nabfiz"],
+                \ ]
+    
+    Note that vim doesn't care about the trailing comma in lists.
+
+========================================================================
+*argloco-commands*                                      *:GoBackth* *:GoForth*
 
   Argloco provides the following two commands for cycling backwards and
-  forwards through the argument list:
+  forwards through the tablocal argument list:
 
-        :LarglN
-        :Largln
+        :GoBackth
+        :GoForth
 
 ========================================================================
 *argloco-mappings*
 
+Default mappings are:
 
-Mappings:
+F1 for GoBackth
 
-            ----------------------------------------------
-            |                       |                    |
-    :LarglN |  Alt + Shift + Up     |  Alt + Shift + k   |
-    :Largln |  Alt + Shift + Down   |  Alt + Shift + j   |
-            |                       |                    |
-            ----------------------------------------------
-            |                       |                    |
-    :tabN   |  Alt + Shift + Left   |  Alt + Shift + h   |
-    :tabn   |  Alt + Shift + Right  |  Alt + Shift + l   |
-            |                       |                    |
-            ----------------------------------------------
+F2 for GoForth
 
 ========================================================================
 *argloco-settings*                                      *g:argloco_map_all*
-To enable all mappings:
+
+To enable default mappings:
 
         :let g:argloco_map_all = 1
 
-                                               *g:argloco_map_the_arrows*
-                                            *g:argloco_map_function_keys*
-                                                 *g:argloco_map_home_row*
-Or individually enable mappings:
+Or individually set mappings:
 
-        :let g:argloco_map_the_arrows = 1
-        :let g:argloco_map_function_keys = 1
-        :let g:argloco_map_home_row = 1
-
-========================================================================
-                                                      *argloco#TabArgs()*
-Function:
-
-
-    argloco#TabArgs( tab-argument-list )
-
-========================================================================
-
-For vundle users:
-
-        :Plugin 'dustractor/argloco'
-
-For vim-plug users:
-
-        :Plug 'dustractor/argloco'
-
-
+        :let g:argloco_map_back = '...'
+        :let g:argloco_map_forth = '...'
 
 ========================================================================
 vim:tw=78:ts=8:ft=help:norl:
