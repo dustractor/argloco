@@ -1,59 +1,74 @@
 " plugin/argloco.vim
+" ====================================================================
+" File:        argloco.vim
+" Maintainer:  Shams Kitz <dustractor at gmail dot com>
+" License:     GNU General Public Licence
+" ====================================================================
+"   Copyright (C) 2015 Shams Kitz
+"   Shams Kitz
+"
+" This program is free software: you can redistribute it and/or modify
+" it under the terms of the GNU General Public License as published by
+" the Free Software Foundation, either version 3 of the License, or
+" (at your option) any later version.
+"
+" This program is distributed in the hope that it will be useful,
+" but WITHOUT ANY WARRANTY; without even the implied warranty of
+" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+" GNU General Public License for more details.
+"
+" You should have received a copy of the GNU General Public License
+" along with this program.  If not, see <http://www.gnu.org/licenses/>.
+" ====================================================================
 
-"{{{1 Wipe out nameless buffers
-function! s:WipeoutNonames()
-    for i in range(bufnr('$'),1,-1)
-        if bufname(i) == ""
-            exe "bw ".i
-        endif
-    endfor
+let s:save_cpo = &cpo
+set cpo&vim
+
+if exists("g:loaded_argloco")
+    finish
+endif
+
+let g:loaded_argloco = 1
+
+function! argloco#version()
+    return '1.2.3'
 endfunction
 
-"{{{1 Make taboo tabs with local argument lists
-function! argloco#Argloco(tabargls)
-    let l:madefirst = 0
-    for [tabname,tabargs] in a:tabargls
-        if l:madefirst == 0
-            exe "TabooRename " . l:tabname
-            let l:madefirst = 1
-        else
-            exe "TabooOpen " . l:tabname
-        endif
-        silent exe "arglocal " . l:tabargs
-    endfor
-    call s:WipeoutNonames()
-endfunction
+com! GoBackth call argloco#GoBackth()
+com! GoForth call argloco#GoForth()
 
-"{{{1 Functions for moving around the argument list
-function! argloco#LargLBack()
-    if argidx() == 0
-        exe "argu ".argc()
-    else
-        exe "N"
-    endif
-endfunction
+com! -nargs=1 ArgLoco call argloco#Argloco(<args>)
 
-function! argloco#LargLForth()
-    if argidx() == ( argc() - 1 )
-        exe "rew"
-    else
-        exe "n"
-    endif
-endfunction
+let s:do_map_back = 0
+let s:do_map_forth = 0
 
-"{{{1 Functions for moving amongst the tabs
-function! argloco#GoBackth()
-    if exists('t:taboo_tab_name')
-        call argloco#LargLBack()
-    else
-        exe 'bN'
-    endif
-endfunction
+if exists("g:argloco_map_all")
+    let s:do_map_back = 1
+    let s:do_map_forth = 1
+else
+    let s:do_map_back = exists("g:argloco_map_back")
+    let s:do_map_forth = exists("g:argloco_map_forth")
+endif
 
-function! argloco#GoForth()
-    if exists('t:taboo_tab_name')
-        call argloco#LargLForth()
-    else
-        exe 'bn'
-    endif
-endfunction
+if s:do_map_back
+    let s:map_back = get(g:,"argloco_map_back",'<F1>')
+endif
+
+if s:do_map_forth
+    let s:map_forth = get(g:,"argloco_map_forth",'<F2>')
+endif
+
+let s:mapfmt = 'nnoremap %s :%s<CR>'
+
+if s:do_map_back
+    exec printf(s:mapfmt,s:map_back,'GoBackth')
+endif
+
+if s:do_map_forth
+    exec printf(s:mapfmt,s:map_forth,'GoForth')
+endif
+
+let &cpo = s:save_cpo
+
+unlet s:save_cpo
+
