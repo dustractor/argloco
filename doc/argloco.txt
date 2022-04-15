@@ -17,14 +17,6 @@
     would open up vim with two tabs, foo and quuz, with each tab having two
     files on their tab-local argument lists.
 
-    That could also be written as follows:
-
-        :ArgLoco [
-                \ ["foo","bar baz"],
-                \ ["quuz","zif nabfiz"],
-                \ ]
-    
-    Note that vim doesn't care about the trailing comma in lists.
 
 ========================================================================
 *argloco-commands*                                      *:GoBackth* *:GoForth*
@@ -35,14 +27,17 @@
         :GoBackth
         :GoForth
 
+  Used when there is no tab or tablocal argument-list, GoForth and GoBackth
+  fall back to vim's usual traversal of the global argument-list.
+
 ========================================================================
 *argloco-mappings*
 
 Default mappings are:
 
-F1 for GoBackth
+<X1Mouse> for GoBackth
 
-F2 for GoForth
+<X2Mouse> for GoForth
 
 ========================================================================
 *argloco-settings*                                      *g:argloco_map_all*

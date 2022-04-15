@@ -51,11 +51,11 @@ else
 endif
 
 if s:do_map_back
-    let s:map_back = get(g:,"argloco_map_back",'<F1>')
+    let s:map_back = get(g:,"argloco_map_back",'<X1Mouse>')
 endif
 
 if s:do_map_forth
-    let s:map_forth = get(g:,"argloco_map_forth",'<F2>')
+    let s:map_forth = get(g:,"argloco_map_forth",'<X2Mouse>')
 endif
 
 let s:mapfmt = 'nnoremap %s :%s<CR>'

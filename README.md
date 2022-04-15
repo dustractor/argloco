@@ -11,8 +11,11 @@ named tabs.
 * GoBackth
     Traverse backwards the argument list
 
-In both cases, if there is a tab-local argument list, then that is used,
-otherwise the normal vim-wide argument list is traversed.
+When either command is used inside of a 'taboo' tab, traverse the tabpage's local arguments-list.
+
+Used elsewhere -- not in a 'taboo' tab -- fall back to vim's usual argument list traversal methods N and n.
+
+
 
 * ArgLoco
 

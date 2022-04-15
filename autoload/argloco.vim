@@ -1,5 +1,7 @@
+
 "{{{1 Wipe out nameless buffers
-function! s:WipeoutNonames()
+
+function! s:BufWipeoutNameless()
     for i in range(bufnr('$'),1,-1)
         if bufname(i) == ""
             exe "bw ".i
@@ -8,6 +10,7 @@ function! s:WipeoutNonames()
 endfunction
 
 "{{{1 Make taboo tabs with local argument lists
+
 function! argloco#Argloco(tabargls)
     let l:madefirst = 0
     for [tabname,tabargs] in a:tabargls
@@ -19,10 +22,11 @@ function! argloco#Argloco(tabargls)
         endif
         silent exe "arglocal " . l:tabargs
     endfor
-    call s:WipeoutNonames()
+    call s:BufWipeoutNameless()
 endfunction
 
 "{{{1 Functions for moving around the argument list
+
 function! argloco#LargLBack()
     if argidx() == 0
         exe "argu ".argc()
@@ -40,6 +44,7 @@ function! argloco#LargLForth()
 endfunction
 
 "{{{1 Functions for moving amongst the tabs
+
 function! argloco#GoBackth()
     if exists('t:taboo_tab_name')
         call argloco#LargLBack()
@@ -55,3 +60,4 @@ function! argloco#GoForth()
         exe 'bn'
     endif
 endfunction
+

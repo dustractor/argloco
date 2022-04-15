@@ -1,11 +1,9 @@
-:LarglN	argloco.txt	/*:LarglN*
-:Largln	argloco.txt	/*:Largln*
-argloco#TabArgs()	argloco.txt	/*argloco#TabArgs()*
+:ArgLoco	argloco.txt	/*:ArgLoco*
+:GoBackth	argloco.txt	/*:GoBackth*
+:GoForth	argloco.txt	/*:GoForth*
+argloco-command	argloco.txt	/*argloco-command*
 argloco-commands	argloco.txt	/*argloco-commands*
 argloco-mappings	argloco.txt	/*argloco-mappings*
 argloco-settings	argloco.txt	/*argloco-settings*
 argloco.vim	argloco.txt	/*argloco.vim*
 g:argloco_map_all	argloco.txt	/*g:argloco_map_all*
-g:argloco_map_function_keys	argloco.txt	/*g:argloco_map_function_keys*
-g:argloco_map_home_row	argloco.txt	/*g:argloco_map_home_row*
-g:argloco_map_the_arrows	argloco.txt	/*g:argloco_map_the_arrows*
